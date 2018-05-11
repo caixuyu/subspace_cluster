@@ -28,13 +28,13 @@ from clustering import Clustering
 import numpy as np
 import time
 from sklearn.datasets import load_iris
-from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import StandardScaler,MinMaxScaler
 
 def data_preprocess(data, preprocess_method="standard"):
     if preprocess_method == "standard":
         return StandardScaler().fit_transform(data)
     elif preprocess_method == "maxmin":
-        min_max_scaler = preprocessing.MinMaxScaler()
+        min_max_scaler = MinMaxScaler()
         return min_max_scaler.fit_transform(data)
 
 def subspace_cluster(datapath, ypath, algorithm, k, sep=",", preprocess_method="standard", replicates=10, max_ite=100, beta=2, init_weights=None, init_centroids=None, init_weights_method="random", is_sparse=0, threshold=0.9, l=2, minDeviation=0.1, A=30, B=10):
